@@ -12,9 +12,7 @@ if(process.env['HOME'] == null || process.env['HOME'] === undefined){
 }
 
 const proxy = httpProxy.createServer({
-  target: {
-    host: 'http://localhost:3311'
-  },
+  target: 'http://localhost:3311',
   ssl: {
     key: fs.readFileSync(pathToKey, 'utf8'),
     cert: fs.readFileSync(pathToCert, 'utf8')
@@ -25,11 +23,11 @@ const proxy = httpProxy.createServer({
 
 proxy.on('error', (err, req, res) => {
   console.log("An error occurred:", err);
-  res.status(500);
-  res.json({
-    "message": "An wild error occurred",
-    "error": err
-  })
+  res.writeHead(500, {
+    'Content-Type': 'text/plain'
+  });
+
+  res.end('Something went wrong. And we are reporting a custom error message:\n' + JSON.stringify(err));
 });
 
 console.log('Proxy to http://localhost:3311 is listening on port', proxyPort);
