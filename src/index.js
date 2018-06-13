@@ -9,8 +9,8 @@ proxy.createServer({
     port: 3311
   },
   ssl: {
-    key: fs.readFileSync(process.env.HOMEPATH + '/.ssh/host_rsa', 'utf8'),
-    cert: fs.readFileSync(process.env.HOMEPATH + '/.ssh/host.crt', 'utf8')
+    key: fs.readFileSync(process.env['HOME'] + '/.ssh/host_rsa', 'utf8'),
+    cert: fs.readFileSync(process.env['HOME'] + '/.ssh/host.crt', 'utf8')
   }
 }).listen(proxyPort);
 
