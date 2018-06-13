@@ -3,8 +3,8 @@ const httpProxy = require('http-proxy');
 
 const proxyPort = 8899;
 
-let pathToKey = process.env['HOME'] + '/.ssh/domain.key';
-let pathToCert = process.env['HOME'] + '/.ssh/domain.crt';
+let pathToKey = "/etc/letsencrypt/live/vini-ethnode.westeurope.cloudapp.azure.com/privkey.pem'";
+let pathToCert = "/etc/letsencrypt/live/vini-ethnode.westeurope.cloudapp.azure.com/fullchain.pem'";
 
 if(process.env['HOME'] == null || process.env['HOME'] === undefined){
   pathToKey = "../cert/domain_test.key";
