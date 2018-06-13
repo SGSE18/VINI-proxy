@@ -1,0 +1,7 @@
+{
+  "name": "VINI-proxy",
+  "version": "0.0.1",
+  "dependencies": {
+    "http-proxy": "^1.17.0"
+  }
+}
