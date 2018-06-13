@@ -12,7 +12,12 @@ if(process.env['HOME'] == null || process.env['HOME'] === undefined){
 }
 
 const proxy = httpProxy.createServer({
-  target: 'http://localhost:3311',
+  target: {
+    host: "localhost",
+    port: "3311",
+    https: false,
+    rejectUnauthorized: false
+  },
   ssl: {
     key: fs.readFileSync(pathToKey, 'utf8'),
     cert: fs.readFileSync(pathToCert, 'utf8')
